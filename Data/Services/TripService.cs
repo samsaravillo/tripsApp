@@ -12,15 +12,16 @@ namespace tripsApp.Data
 
         public void DeteleTrip(int tripId)
         {
-            throw new System.NotImplementedException();
+            var trip = Data.Trips.FirstOrDefault(n => n.Id == tripId);
+            if (trip != null)
+            {
+                Data.Trips.Remove(trip);
+            }
         }
 
         public List<Trip> GetAllTrips() => Data.Trips.ToList();
 
-        public Trip GetTripById(int tripId)
-        {
-            throw new System.NotImplementedException();
-        }
+        public Trip GetTripById(int tripId) => Data.Trips.FirstOrDefault(n => n.Id == tripId);
 
         public void UpdateTrip(int tripId, Trip trip)
         {

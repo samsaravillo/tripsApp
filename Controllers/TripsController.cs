@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using tripsApp.Data;
 namespace tripsApp.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class TripsController : Controller
     {
@@ -16,6 +17,13 @@ namespace tripsApp.Controllers
         {
             var allTrips = _service.GetAllTrips();
             return Ok(allTrips);
+        }
+
+        [HttpGet("SingleTrip/{id}")]
+        public IActionResult GetTripById(int id)
+        {
+            var trip = _service.GetTripById(id);
+            return Ok(trip);
         }
 
         [HttpPost("[action]")]
@@ -33,6 +41,13 @@ namespace tripsApp.Controllers
         {
             _service.UpdateTrip(id, trip);
             return Ok(trip);
+        }
+
+        [HttpDelete("[action]/{id}")]
+        public IActionResult DeleteTrip(int id)
+        {
+            _service.DeteleTrip(id);
+            return Ok();
         }
     }
 }
