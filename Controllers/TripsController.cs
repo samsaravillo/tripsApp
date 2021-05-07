@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using tripsApp.Data;
 namespace tripsApp.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
     public class TripsController : Controller
     {
