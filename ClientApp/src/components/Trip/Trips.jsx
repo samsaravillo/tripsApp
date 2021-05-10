@@ -11,6 +11,8 @@ class Trips extends Component {
     this.state = {
       trips: [],
       loading: true,
+      failed: false,
+      error: "",
     };
   }
 
@@ -29,10 +31,25 @@ class Trips extends Component {
   }
 
   populateTripsData() {
-    axios.get("api/Trips/GetTrips").then((result) => {
-      const response = result.data;
-      this.setState({ trips: response, loading: false });
-    });
+    axios
+      .get("api/Trips/GetTrips")
+      .then((result) => {
+        const response = result.data;
+        this.setState({
+          trips: response,
+          loading: false,
+          failed: false,
+          error: "",
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          trips: [],
+          loading: false,
+          failed: true,
+          error: "Trips could not be loaded",
+        });
+      });
   }
 
   renderAllTripsTable(trips) {
@@ -86,6 +103,10 @@ class Trips extends Component {
       <p>
         <em>Loading...</em>
       </p>
+    ) : this.state.failed ? (
+      <div className="text-danger">
+        <em>{this.state.error}</em>
+      </div>
     ) : (
       this.renderAllTripsTable(this.state.trips)
     );
