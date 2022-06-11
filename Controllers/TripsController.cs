@@ -17,7 +17,6 @@ namespace tripsApp.Controllers
         {
             try
             {
-                //throw new Exception();
                 var allTrips = _service.GetAllTrips();
                 return Ok(allTrips);
             }
