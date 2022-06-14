@@ -6,8 +6,8 @@ export class Home extends Component {
   render () {
     return (
       <div>
-        <h1>Welcome to Trips Manager</h1>
-        <p>Use this manager to manage your trips, by: </p>
+        <h1>Welcome to trips manager</h1>
+        <p>Use this manager to manage your trips, by:</p>
         <ul>
           <li>Add a new trip</li>
           <li>Update a trip</li>

@@ -1,10 +1,11 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
-using tripsApp.Data;
-namespace tripsApp.Controllers
+using Trips.Data;
+
+namespace Trips.Controllers
 {
     [Route("api/[controller]")]
-    public class TripsController : Controller
+    public class TripsController: Controller
     {
         private ITripService _service;
         public TripsController(ITripService service)
@@ -15,15 +16,14 @@ namespace tripsApp.Controllers
         [HttpGet("[action]")]
         public IActionResult GetTrips()
         {
-            try
-            {
+            try {
+                // throw new Exception();
                 var allTrips = _service.GetAllTrips();
                 return Ok(allTrips);
-            }
-            catch (Exception ex)
-            {
+            } catch(Exception ex){
                 return BadRequest(ex.Message);
             }
+            
         }
 
         [HttpGet("SingleTrip/{id}")]
@@ -33,27 +33,27 @@ namespace tripsApp.Controllers
             return Ok(trip);
         }
 
-        [HttpPost("[action]")]
-        public IActionResult AddTrip([FromBody] Trip trip)
+        [HttpPost("AddTrip")]
+        public IActionResult AddTrip([FromBody]Trip trip)
         {
-            if (trip != null)
+            if(trip != null) 
             {
                 _service.AddTrip(trip);
             }
             return Ok();
         }
 
-        [HttpPut("[action]/{id}")]
-        public IActionResult UpdateTrip(int id, [FromBody] Trip trip)
+        [HttpPut("UpdateTrip/{id}")]
+        public IActionResult UpdateTrip(int id, [FromBody]Trip trip)
         {
             _service.UpdateTrip(id, trip);
             return Ok(trip);
         }
 
-        [HttpDelete("[action]/{id}")]
+        [HttpDelete("DeleteTrip/{id}")]
         public IActionResult DeleteTrip(int id)
         {
-            _service.DeteleTrip(id);
+            _service.DeleteTrip(id);
             return Ok();
         }
     }

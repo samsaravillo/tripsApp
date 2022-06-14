@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using tripsApp.Data;
+using Trips.Data;
 
-namespace tripsApp
+namespace Trips
 {
     public class Startup
     {

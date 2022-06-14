@@ -1,6 +1,6 @@
 using System;
 
-namespace tripsApp
+namespace Trips
 {
     public class WeatherForecast
     {

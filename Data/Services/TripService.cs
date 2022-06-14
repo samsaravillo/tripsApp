@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace tripsApp.Data
+namespace Trips.Data
 {
     public class TripService : ITripService
     {
@@ -10,10 +10,10 @@ namespace tripsApp.Data
             Data.Trips.Add(trip);
         }
 
-        public void DeteleTrip(int tripId)
+        public void DeleteTrip(int tripId)
         {
             var trip = Data.Trips.FirstOrDefault(n => n.Id == tripId);
-            if (trip != null)
+            if(trip != null)
             {
                 Data.Trips.Remove(trip);
             }
@@ -26,7 +26,8 @@ namespace tripsApp.Data
         public void UpdateTrip(int tripId, Trip trip)
         {
             var oldTrip = Data.Trips.FirstOrDefault(n => n.Id == tripId);
-            if (oldTrip != null)
+
+            if(oldTrip != null)
             {
                 oldTrip.Name = trip.Name;
                 oldTrip.Description = trip.Description;

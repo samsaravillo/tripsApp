@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace tripsApp.Data
+namespace Trips.Data
 {
     public static class Data
-    {
-        public static List<Trip> Trips => allTrips;
-        static List<Trip> allTrips = new List<Trip>()
+{
+    public static List<Trip> Trips => allTrips;
+    static List<Trip> allTrips = new List<Trip>()
     {
         new Trip()
         {
@@ -58,5 +58,5 @@ namespace tripsApp.Data
         }
     };
 
-    }
+}
 }

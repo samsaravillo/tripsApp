@@ -1,6 +1,6 @@
 using System;
 
-namespace tripsApp.Data
+namespace Trips.Data
 {
     public class Trip
     {
